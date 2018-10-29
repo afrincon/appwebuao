@@ -80,24 +80,31 @@
             </div>
           </div>
           <div class="column">
-            <select-generico :old="'{{ old('perfil', $user->roles[0]->id) }}'" :url="'/usuarios/obtenerlistadoroles'" :label="'Perfil'" :propname="'perfil'" :class_id="'select {{ $errors->has('perfil') ? ' is-danger' : '' }}'"></select-generico>
-            @if ($errors->has('perfil'))
-              <p class="help is-danger">{{ $errors->first('perfil') }}</p>
-            @endif
+            <div class="field">
+                <label class="label">Perfil</label>
+                <select-generico :old="'{{ old('perfil', $user->roles[0]->id) }}'" :url="'/usuarios/obtenerlistadoroles'" :propname="'perfil'" :class_id="'select {{ $errors->has('perfil') ? ' is-danger' : '' }}'"></select-generico>
+                @if ($errors->has('perfil'))
+                  <p class="help is-danger">{{ $errors->first('perfil') }}</p>
+                @endif
+            </div>            
           </div>
         </div>
-        <div class="select">
-          <select  name="estado">
-            <option disabled>Seleccione una opción</option>
-            @if($iglesia->estado == 1)
-              <option selected value="{{ old('estado', $user->estado) }}">Activo</option>
-              <option value="0">Inactivo</option>
-            @else
-              <option selected value="{{ old('estado', $user->estado) }}">Inactivo</option>
-              <option value="1">Activo</option>
-            @endif
-          </select>
+        <div class="field">
+          <label class="label">Estado</label>
+          <div class="select">
+            <select  name="estado">
+              <option disabled>Seleccione una opción</option>
+              @if($user->estado == 1)
+                <option selected value="{{ old('estado', $user->estado) }}">Activo</option>
+                <option value="0">Inactivo</option>
+              @else
+                <option selected value="{{ old('estado', $user->estado) }}">Inactivo</option>
+                <option value="1">Activo</option>
+              @endif
+            </select>
+          </div>
         </div>
+        
         <hr>
         
         <button type="submit" class="button is-link is-medium is-outlined">Guardar</button>

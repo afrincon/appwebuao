@@ -55,7 +55,6 @@ export default {
       axios.get(url, { params: { name: this.name }}).then(response => {
         this.usuarios = response.data;
         var array = this.usuarios;
-        console.log(array);
       });
     }
   }

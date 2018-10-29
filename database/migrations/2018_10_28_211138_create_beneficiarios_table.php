@@ -14,10 +14,10 @@ class CreateBeneficiariosTable extends Migration
     public function up()
     {
         Schema::create('beneficiarios', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_beneficiario');
             $table->string('nombre');
             $table->integer('id_tipo_documento')->unsigned();
-            $table->string('documento')->unique();
+            $table->string('documento');
             $table->string('direccion');
             $table->string('telefono');
             $table->string('clasificacion');

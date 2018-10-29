@@ -46,7 +46,8 @@
           </div>
           <div class="column">
             <div class="field">
-              <select-generico :old="'{{ old('id_arquidiocesis', $iglesia->id_arquidiocesis) }}'" :propname="'id_arquidiocesis'" :url="'/iglesias/obtenerlistadodiocesis'" :label="'Diocesis principal'" :class="'select {{ $errors->has('id_arquidiocesis') ? ' is-danger' : '' }}'"></select-generico>
+              <label class="label">Diocesis principal</label>
+              <select-generico :old="'{{ old('id_arquidiocesis', $iglesia->id_arquidiocesis) }}'" :propname="'id_arquidiocesis'" :url="'/iglesias/obtenerlistadodiocesis'" :class="'select {{ $errors->has('id_arquidiocesis') ? ' is-danger' : '' }}'"></select-generico>
                 @if ($errors->has('id_arquidiocesis'))
                   <p class="help is-danger">{{ $errors->first('id_arquidiocesis') }}</p>
                 @endif
@@ -54,7 +55,8 @@
           </div>
           <div class="column">
             <div class="field">
-              <select-generico :old="'{{ old('user_id', $iglesia->user_id) }}'" :propname="'user_id'" :url="'/usuarios/obtenerlistadoparrocos'" :label="'Parroco'" :class_id="'select {{ $errors->has('user_id') ? ' is-danger' : '' }}'"></select-generico>
+              <label class="label">Parroco</label>
+              <select-generico :old="'{{ old('user_id', $iglesia->user_id) }}'" :propname="'user_id'" :url="'/usuarios/obtenerlistadoparrocos'" :class_id="'select {{ $errors->has('user_id') ? ' is-danger' : '' }}'"></select-generico>
               @if ($errors->has('user_id'))
                 <p class="help is-danger">{{ $errors->first('user_id') }}</p>
               @endif

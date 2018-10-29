@@ -10,6 +10,8 @@ class Beneficiario extends Model
     public $timestamps = true;
     protected $primaryKey = 'id_beneficiario';
 
+    protected $fillable = array('documento', 'id_tipo_documento', 'nombre', 'estado', 'direccion', 'clasificacion', 'telefono');
+
     public function tipo_documento(){
         return $this->hasOne('App\TiposDocumento', 'id', 'id_tipo_documento');
     }

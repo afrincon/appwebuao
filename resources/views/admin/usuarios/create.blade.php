@@ -78,14 +78,17 @@
               <input type="date" name="fecha_ingreso" class="input {{ $errors->has('fecha_ingreso') ? ' is-danger' : '' }}" value="{{ old('fecha_ingreso') }}" placeholder="Ingrese el numero teléfonico" max="<?php echo date("Y-m-d");?>">
               @if ($errors->has('fecha_ingreso'))
                 <p class="help is-danger">{{ $errors->first('fecha_ingreso') }}</p>
-              @endif
+              @endif              
             </div>
           </div>
           <div class="column">
-            <select-generico :old="'{{ old('perfil') }}'" :url="'/usuarios/obtenerlistadoroles'" :label="'Perfil'" :propname="'perfil'" :class_id="'select {{ $errors->has('perfil') ? ' is-danger' : '' }}'"></select-generico>
-            @if ($errors->has('perfil'))
-              <p class="help is-danger">{{ $errors->first('perfil') }}</p>
-            @endif
+            <div class="field">
+                <label class="label">Perfil</label>
+                <select-generico :old="'{{ old('perfil') }}'" :url="'/usuarios/obtenerlistadoroles'" :propname="'perfil'" :class_id="'select {{ $errors->has('perfil') ? ' is-danger' : '' }}'"></select-generico>
+                @if ($errors->has('perfil'))
+                  <p class="help is-danger">{{ $errors->first('perfil') }}</p>
+                @endif
+            </div>            
           </div>
         </div>
         <input type="hidden" name="estado" value="1">

@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="beneficiario in beneficiarios" :key="beneficiario.id_beneficiario">
+          <tr v-for="beneficiario in beneficiarios" :key="beneficiario.id_beneficiario">            
               <td>{{ beneficiario.id_beneficiario }}</td>
               <td><a :href="'/beneficiarios/' + beneficiario.id_beneficiario">{{ beneficiario.nombre }}</a></td>
               <td>{{ beneficiario.tipo_documento.descripcion }}</td>

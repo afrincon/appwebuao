@@ -7,6 +7,8 @@ $font-family-content: 'Montserrat', sans-serif;
 
 // css Bulma.io
 @import '~bulma/bulma.sass';
+// import Bulma calendar
+@import '~bulma-calendar/src/sass/index.sass';
 
 /* General */
 html, body {

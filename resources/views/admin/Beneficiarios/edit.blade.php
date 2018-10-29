@@ -3,9 +3,10 @@
 @section('content')
 <div class="column is-12">
   <div class="panel">
-    <p class="panel-heading">Creación de Beneficiario</p>
+    <p class="panel-heading">Edicion de {{ $beneficiario->nombre }}</p>
     <div class="panel-block">
-      <form class="long-form" action="{{ url('beneficiarios') }}" method="post">
+      <form class="long-form" action="{{ route('beneficiarios.update', $beneficiario->id_beneficiario) }}" method="post">
+        @method('put')
         @csrf
         @if(count($errors) > 0)
         <div class="notification is-danger">
@@ -23,7 +24,7 @@
           <div class="column is-half"> 
             <div class="field">
               <label for="nombre" class="label">Nombre</label>
-              <input type="text" name="nombre" class="input {{ $errors->has('nombre') ? ' is-danger' : '' }}" value="{{ old('nombre') }}" placeholder="Ingrese el nombre del beneficiario">
+              <input type="text" name="nombre" class="input {{ $errors->has('nombre') ? ' is-danger' : '' }}" value="{{ old('nombre', $beneficiario->nombre) }}" placeholder="Ingrese el nombre del beneficiario">
               @if ($errors->has('nombre'))
                 <p class="help is-danger">{{ $errors->first('nombre') }}</p>
               @endif
@@ -32,26 +33,20 @@
           <div class="column"> 
             <div class="field">
               <label class="label">Tipo de documento</label>
-              <select-generico :old="'{{ old('id_tipo_documento') }}'" :propname="'id_tipo_documento'" :url="'/beneficiarios/obtenerlistadotiposdoc'" :class="'select {{ $errors->has('id_tipo_documento') ? ' is-danger' : '' }}'"></select-generico>
-              @if ($errors->has('id_tipo_documento'))
-                <p class="help is-danger">{{ $errors->first('id_tipo_documento') }}</p>
-              @endif
+              <input class="input" type="text" value="{{ $beneficiario->tipo_documento->descripcion }}" disabled>              
             </div>       
           </div>
           <div class="column">
             <div class="field">
               <label class="label">Documento</label>
-              <input type="text" name="documento" class="input {{ $errors->has('documento') ? ' is-danger' : '' }}" value="{{ old('documento') }}" placeholder="Ingrese el número de documento">
-              @if ($errors->has('documento'))
-                <p class="help is-danger">{{ $errors->first('documento') }}</p>
-              @endif
+              <input type="text" class="input" value="{{  $beneficiario->documento }}" disabled>              
             </div>
           </div>
         </div>
 
         <div class="field">
           <label class="label">Dirección</label>
-          <input type="text" name="direccion" class="input {{ $errors->has('direccion') ? ' is-danger' : '' }}" value="{{ old('direccion') }}" placeholder="Ingrese la dirección de la iglesia">
+          <input type="text" name="direccion" class="input {{ $errors->has('direccion') ? ' is-danger' : '' }}" value="{{ old('direccion', $beneficiario->direccion) }}" placeholder="Ingrese la dirección de la iglesia">
           @if ($errors->has('direccion'))
             <p class="help is-danger">{{ $errors->first('direccion') }}</p>
           @endif
@@ -62,7 +57,7 @@
           <div class="column is-two-fifths"> 
             <div class="field">
               <label class="label">Teléfono</label>
-              <input type="text" name="telefono" class="input {{ $errors->has('telefono') ? ' is-danger' : '' }}" value="{{ old('telefono') }}" placeholder="Ingrese el teléfono de la iglesia">
+              <input type="text" name="telefono" class="input {{ $errors->has('telefono') ? ' is-danger' : '' }}" value="{{ old('telefono', $beneficiario->telefono) }}" placeholder="Ingrese el teléfono de la iglesia">
               @if ($errors->has('telefono'))
                 <p class="help is-danger">{{ $errors->first('telefono') }}</p>
               @endif
@@ -84,8 +79,23 @@
               </div>
             </div>          
           </div>
+          <div class="column">
+            <div class="select">
+              <label class="label">Estado</label>
+              <select  name="estado">
+              <option disabled>Seleccione una opción</option>
+                @if($beneficiario->estado == 1)
+                  <option selected value="{{ old('estado', $beneficiario->estado) }}">Activo</option>
+                  <option value="0">Inactivo</option>
+                @else
+                  <option selected value="{{ old('estado', $beneficiario->estado) }}">Inactivo</option>
+                  <option value="1">Activo</option>
+                @endif
+              </select>
+            </div>
+          </div>
         </div>
-        <input type="hidden" name="estado" value="1">
+        
         <hr>
         
         <button type="submit" class="button is-link is-medium is-outlined">Guardar</button>

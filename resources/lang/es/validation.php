@@ -130,6 +130,12 @@ return [
         ],
     ],
 
+    'beneficiarios' => [
+        'error' => [
+            'unique'    => 'Un beneficiario con estos datos ya se encuentra registrado',
+        ]
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes

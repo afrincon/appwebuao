@@ -1,13 +1,12 @@
 <template>
-  <div v-bind:class="this.class_id">
-    <label class="label">{{this.label}}</label>        
-      <select v-model="selected" v-bind:name="this.propname" v-bind:id="this.value_id">          
-        <option selected disabled>Seleccione una opción</option>
-        <option v-for="option in options" v-bind:value="option.value" :key="option.value">
-          {{ option.text }}
-        </option>
-      </select> 
-  </div>              
+  <div v-bind:class="this.class_id">            
+    <select v-model="selected" v-bind:name="this.propname" v-bind:id="this.value_id">          
+      <option selected disabled>Seleccione una opción</option>
+      <option v-for="option in options" v-bind:value="option.value" :key="option.value">
+        {{ option.text }}
+      </option>
+    </select> 
+  </div>  
 </template>
 
 <script>
@@ -20,9 +19,9 @@
        ]
      }
    },
-   props: ['old', 'url', 'label', 'propname', 'value_id', 'class_id'],
+   props: ['old', 'url', 'propname', 'value_id', 'class_id'],
    created() {
-     console.log(this.propname)
+     //console.log(this.propname)
      this.getUser();
      if(this.old.length === 0) {
        this.selected = 'Seleccione una opción'

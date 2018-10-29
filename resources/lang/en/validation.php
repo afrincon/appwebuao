@@ -130,6 +130,12 @@ return [
         ],
     ],
 
+    'beneficiarios' => [
+        'error' => [
+            'unique'    => 'The combination [":id_tipo_documento", ":documento"] already exists'
+        ]
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes

@@ -1,6 +1,7 @@
 
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
+window.Calendar = require('bulma-calendar');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -59,3 +60,17 @@ window.$(document).on('click', '.notification > button.delete', function() {
     $(this).parent().addClass('is-hidden');
     return false;
 });
+
+/*
+// Initialize all input of date type.
+const calendars = window.Calendar.attach('[type="date"]');
+
+// Loop on each calendar initialized
+calendars.forEach(calendar => {
+	// Add listener to date:selected event
+	calendar.on('date:selected', date => {
+		console.log(date);
+	});
+});
+
+*/
