@@ -44387,6 +44387,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           case '/beneficiarios/obtenerlistadobeneficiarios':
             _this.info = response.data;
             break;
+          case '/ayudas/obtenerlistadoayudas':
+            _this.info = response.data;
+            break;
         }
       });
     }

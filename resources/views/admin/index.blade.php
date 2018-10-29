@@ -14,18 +14,15 @@
         </div>
       </div>
     </section>
+    @if (Auth::user()->hasRole('admin'))
     <section class="info-tiles">
       <div class="tile is-ancestor has-text-centered">
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <p class="title">439k</p>
-            <p class="subtitle">Ayudas</p>
-          </article>
-        </div>
+        <tiles-generico :url="'/ayudas/obtenerlistadoayudas'" :datainfo="'Ayudas'"></tiles-generico>
         <tiles-generico :url="'/usuarios/obtenerlistadoparrocos'" :datainfo="'Parrocos'"></tiles-generico>
         <tiles-generico :url="'/iglesias/obtenerlistadoiglesias'" :datainfo="'Iglesias'"></tiles-generico>
         <tiles-generico :url="'/beneficiarios/obtenerlistadobeneficiarios'" :datainfo="'Beneficiarios'"></tiles-generico>
       </div>
     </section>
+    @endif
   </div>
 @endsection

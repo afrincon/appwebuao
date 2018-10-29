@@ -33,6 +33,9 @@ export default {
             case '/beneficiarios/obtenerlistadobeneficiarios':
               this.info = response.data;
               break;
+            case '/ayudas/obtenerlistadoayudas': 
+              this.info = response.data;              
+              break;
         }
       });
     }

@@ -36,7 +36,15 @@ class User extends Authenticatable
     }
 
     /* Method for user based roles login */
-    public function authorizeRoles($roles) {
+    public function authorizeRoles($roles)
+    {
+        if ($this->hasAnyRole($roles)) {
+            return true;
+        }
+        abort(401, 'Esta acción no está autorizada.');
+    }
+    public function hasAnyRole($roles)
+    {
         if (is_array($roles)) {
             foreach ($roles as $role) {
                 if ($this->hasRole($role)) {
@@ -48,10 +56,10 @@ class User extends Authenticatable
                 return true;
             }
         }
-        return false;
+    return false;
     }
-
-    public function hasRole($role) {
+    public function hasRole($role)
+        {
         if ($this->roles()->where('name', $role)->first()) {
             return true;
         }
