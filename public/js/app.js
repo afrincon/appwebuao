@@ -1104,7 +1104,9 @@ window.Vue = __webpack_require__(37);
 Vue.component('tabla-usuarios', __webpack_require__(40));
 Vue.component('tabla-iglesias', __webpack_require__(43));
 Vue.component('tabla-beneficiarios', __webpack_require__(46));
+Vue.component('tabla-ayudas', __webpack_require__(60));
 Vue.component('select-generico', __webpack_require__(49));
+Vue.component('tiles-generico', __webpack_require__(57));
 
 var app = new Vue({
   el: '#app'
@@ -44175,7 +44177,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       axios.get(this.url).then(function (response) {
         switch (_this.url) {
-          case '/beneficiarios/informacion':
+          case '/beneficiarios/obtenerlistadobeneficiarios':
             response.data.forEach(function (obj) {
               _this.options.push({ text: obj.nombre, value: obj.id_beneficiario });
             });
@@ -44200,7 +44202,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
               _this.options.push({ text: obj.nombre, value: obj.id });
             });
             break;
+          case '/iglesias/obtenerlistadoiglesias':
+            response.data.forEach(function (obj) {
+              _this.options.push({ text: obj.nombre, value: obj.id });
+            });
+            break;
           case '/beneficiarios/obtenerlistadotiposdoc':
+            response.data.forEach(function (obj) {
+              _this.options.push({ text: obj.descripcion, value: obj.id });
+            });
+          case '/ayudas/obtenertiposayudas':
             response.data.forEach(function (obj) {
               _this.options.push({ text: obj.descripcion, value: obj.id });
             });
@@ -44279,6 +44290,369 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(58)
+/* template */
+var __vue_template__ = __webpack_require__(59)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/TilesDashComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-195ded06", Component.options)
+  } else {
+    hotAPI.reload("data-v-195ded06", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'tiles-generico',
+  data: function data() {
+    return {
+      info: ''
+    };
+  },
+
+  props: ['url', 'datainfo'],
+  created: function created() {
+    this.getInfo();
+  },
+
+  methods: {
+    getInfo: function getInfo() {
+      var _this = this;
+
+      axios.get(this.url).then(function (response) {
+        _this.info = response.data;
+        switch (_this.url) {
+          case '/usuarios/obtenerlistadoparrocos':
+            _this.info = response.data;
+            break;
+          case '/iglesias/obtenerlistadoiglesias':
+            _this.info = response.data;
+            break;
+          case '/beneficiarios/obtenerlistadobeneficiarios':
+            _this.info = response.data;
+            break;
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "tile is-parent" }, [
+    _c("article", { staticClass: "tile is-child box" }, [
+      _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.info.length))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "subtitle" }, [_vm._v(_vm._s(this.datainfo))])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-195ded06", module.exports)
+  }
+}
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(61)
+/* template */
+var __vue_template__ = __webpack_require__(62)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/TableAyudasComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-606d17cd", Component.options)
+  } else {
+    hotAPI.reload("data-v-606d17cd", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      ayudas: [],
+      id_beneficiario: null
+
+    };
+  },
+  created: function created() {
+    this.getAyudas();
+  },
+
+  watch: {
+    id_beneficiario: function id_beneficiario(after, before) {
+      this.getAyudas();
+    }
+  },
+  methods: {
+    getAyudas: function getAyudas() {
+      var _this = this;
+
+      var url = 'ayudas/obtenerlistadoayudas';
+      axios.get(url, { params: { id_beneficiario: this.id_beneficiario } }).then(function (response) {
+        _this.ayudas = response.data;
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row", attrs: { id: "crud" } }, [
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.id_beneficiario,
+          expression: "id_beneficiario"
+        }
+      ],
+      staticClass: "input",
+      attrs: { type: "text", name: "name", placeholder: "Buscar beneficiario" },
+      domProps: { value: _vm.id_beneficiario },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.id_beneficiario = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-12" }, [
+      _c(
+        "table",
+        { staticClass: "table table-hover table-striped table is-fullwidth" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.ayudas, function(ayuda) {
+              return _c("tr", { key: ayuda.id_ayuda }, [
+                _c("td", [_vm._v(_vm._s(ayuda.id_ayuda))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ayuda.fecha_ayuda))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ayuda.tipo_ayuda.descripcion))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ayuda.beneficiario.nombre))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ayuda.iglesia.nombre))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ayuda.observaciones))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "button is-link is-rounded is-outlined",
+                      attrs: { href: "/ayudas/" + ayuda.id_ayuda + "/editar" }
+                    },
+                    [_vm._v("Editar")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "button is-danger is-rounded is-outlined",
+                      attrs: { href: "#" }
+                    },
+                    [_vm._v("Anular")]
+                  )
+                ])
+              ])
+            })
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Fecha")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tipo de Ayuda")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Beneficiario")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Iglesia")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Observaciones")]),
+        _vm._v(" "),
+        _c("th", { attrs: { colspan: "2" } }, [_vm._v("   ")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-606d17cd", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

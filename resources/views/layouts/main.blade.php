@@ -38,7 +38,7 @@
         <div id="navbarArquidiocesis" class="navbar-menu">
           <div class="navbar-start">
               <a href="{{ url('/home') }}" class="navbar-item">Inicio</a>
-              <a href="#" class="navbar-item">Ayudas</a>
+              <a href="{{ url('ayudas') }}" class="navbar-item">Ayudas</a>
               <a href="{{ url('beneficiarios') }}" class="navbar-item">Beneficiarios</a>
               <a href="{{ url('iglesias') }}" class="navbar-item">Iglesias</a>
               @if (Auth::user()->hasRole('admin'))

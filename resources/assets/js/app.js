@@ -19,7 +19,9 @@ window.Vue = require('vue');
 Vue.component('tabla-usuarios', require('./components/TableUsersComponent.vue'));
 Vue.component('tabla-iglesias', require('./components/TableIglesiasComponent.vue'));
 Vue.component('tabla-beneficiarios', require('./components/TableBeneficiariosComponent.vue'));
+Vue.component('tabla-ayudas', require('./components/TableAyudasComponent.vue'));
 Vue.component('select-generico', require('./components/GenericSelectComponent.vue'));
+Vue.component('tiles-generico', require('./components/TilesDashComponent.vue'));
 
 
 

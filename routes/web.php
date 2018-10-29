@@ -26,6 +26,8 @@ Route::get('/iglesias/obtenerlistadoiglesias', 'IglesiaController@obtenerIglesia
 Route::get('/iglesias/obtenerlistadodiocesis', 'IglesiaController@obtenerDiocesis');
 Route::get('/beneficiarios/obtenerlistadobeneficiarios', 'BeneficiarioController@obtenerBeneficiarios');
 Route::get('/beneficiarios/obtenerlistadotiposdoc', 'BeneficiarioController@obtenerTipoDocumento');
+Route::get('/ayudas/obtenerlistadoayudas', 'AyudaController@obtenerAyudas');
+Route::get('/ayudas/obtenertiposayudas', 'AyudaController@obtenerTipoAyuda');
 
 Route::resource('/usuarios', 'UsuarioController',
     ['except' => ['destroy']])->middleware('auth', 'role:admin');
@@ -35,4 +37,6 @@ Route::resource('/iglesias', 'IglesiaController',
 
 Route::resource('/beneficiarios', 'BeneficiarioController',
     ['except' => ['destroy']])->middleware('auth', 'role:admin, user');
+
+Route::resource('/ayudas', 'AyudaController')->middleware('auth', 'role:admin, user');
     

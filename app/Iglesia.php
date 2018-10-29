@@ -21,4 +21,9 @@ class Iglesia extends Model
     public function arquidiocesis(){
         return $this->belongsTo('App\Arquidiocesis', 'id_arquidiocesis', 'id');
     }
+
+    /* Relacion tabla ayudas */
+    public function ayudas() {
+        return $this->belongsTo('App\ayuda');
+    }
 }

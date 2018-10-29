@@ -15,4 +15,9 @@ class Beneficiario extends Model
     public function tipo_documento(){
         return $this->hasOne('App\TiposDocumento', 'id', 'id_tipo_documento');
     }
+
+    /* Relacion tabla ayudas */
+    public function ayudas(){
+        return $this->belongsTo('App\ayuda');
+    }
 }

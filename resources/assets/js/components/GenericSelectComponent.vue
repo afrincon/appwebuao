@@ -33,7 +33,7 @@
      getUser() {
         axios.get(this.url).then(response => {
           switch (this.url) {
-            case '/beneficiarios/informacion':
+            case '/beneficiarios/obtenerlistadobeneficiarios':
               response.data.forEach(obj => {
                 this.options.push({ text: obj.nombre, value: obj.id_beneficiario })            
               });
@@ -58,7 +58,16 @@
                 this.options.push({ text: obj.nombre, value: obj.id })            
               });
               break;
+            case '/iglesias/obtenerlistadoiglesias' :
+              response.data.forEach(obj => {
+                this.options.push({ text: obj.nombre, value: obj.id })            
+              });
+              break;
             case '/beneficiarios/obtenerlistadotiposdoc' :
+              response.data.forEach(obj => {
+                this.options.push({ text: obj.descripcion, value: obj.id })            
+              });
+            case '/ayudas/obtenertiposayudas' :
               response.data.forEach(obj => {
                 this.options.push({ text: obj.descripcion, value: obj.id })            
               });
