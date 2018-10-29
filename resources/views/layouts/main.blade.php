@@ -22,6 +22,7 @@
 </head>
 <body>
     <div id="app">
+        
       <!-- Navbar start -->
       <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -36,15 +37,24 @@
         </div>
 
         <div id="navbarArquidiocesis" class="navbar-menu">
-          <div class="navbar-start">
-              <a href="{{ url('/home') }}" class="navbar-item">Inicio</a>
-              <a href="{{ url('ayudas') }}" class="navbar-item">Ayudas</a>
-              <a href="{{ url('beneficiarios') }}" class="navbar-item">Beneficiarios</a>
-              <a href="{{ url('iglesias') }}" class="navbar-item">Iglesias</a>
-              @if (Auth::user()->hasRole('admin'))
-                <a href="{{ url('usuarios') }}" class="navbar-item">Usuarios</a>
-              @endif
-              
+        @guest
+          <div class="navbar-end">
+              <div class="navbar-item">
+                  <div class="buttons">
+                      <a class="button is-primary is-inverted is-outlined is-rounded" href="{{ route('login') }}">Iniciar sesion</a>                      
+                  </div>
+              </div>
+          </div>
+        @else
+        
+          <div class="navbar-start">              
+            <a href="{{ url('/home') }}" class="navbar-item">Inicio</a>
+            <a href="{{ url('ayudas') }}" class="navbar-item">Ayudas</a>
+            <a href="{{ url('beneficiarios') }}" class="navbar-item">Beneficiarios</a>
+            <a href="{{ url('iglesias') }}" class="navbar-item">Iglesias</a>
+            @if (Auth::user()->hasRole('admin'))
+              <a href="{{ url('usuarios') }}" class="navbar-item">Usuarios</a>
+            @endif              
           </div>
           <div class="navbar-end">
             <div class="navbar-item">          
@@ -63,10 +73,9 @@
               </div>
             </div>
           </div>
-        </div>        
+        @endguest
+      </div>   
       </nav>
-
-      <!-- Navbar end -->
       <main class="container">
         <div class="columns is-mobile">
           @yield('content')

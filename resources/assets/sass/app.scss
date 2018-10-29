@@ -10,6 +10,10 @@ $font-family-content: 'Montserrat', sans-serif;
 // import Bulma calendar
 @import '~bulma-calendar/src/sass/index.sass';
 
+/* Import Page Loader */
+@import '~bulma-pageloader/src/sass/index.sass';
+
+
 /* General */
 html, body {
   font-family: $font-family-content;
