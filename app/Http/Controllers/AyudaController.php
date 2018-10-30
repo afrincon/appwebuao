@@ -70,4 +70,10 @@ class AyudaController extends Controller
         $tipo = TipoAyuda::all();
         return response()->json($tipo);
     }
+
+    public function validarUltimaAyuda(Request $request){
+        //dd($direccion);
+        $ayuda = Ayuda::where('id_beneficiario', '=', $request->input('id_beneficiario'))->latest()->first();
+        return response()->json($ayuda);        
+    }
 }

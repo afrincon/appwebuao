@@ -65,12 +65,14 @@
               break;
             case '/beneficiarios/obtenerlistadotiposdoc' :
               response.data.forEach(obj => {
-                this.options.push({ text: obj.descripcion, value: obj.id })            
+                this.options.push({ text: obj.descripcion, value: obj.id })         
               });
+              break;
             case '/ayudas/obtenertiposayudas' :
               response.data.forEach(obj => {
                 this.options.push({ text: obj.descripcion, value: obj.id })            
               });
+              break;
           }          
         });
      }

@@ -40,7 +40,7 @@
           <div class="column">
             <div class="field">
               <label for="nombre" class="label">Beneficiario</label>
-              <select-generico :old="'{{old('id_beneficiario')}}'" :propname="'id_beneficiario'" :url="'/beneficiarios/obtenerlistadobeneficiarios'" :class_id="'select {{ $errors->has('id_beneficiario') ? ' is-danger' : '' }}'"></select-generico>
+              <select-generico :old="'{{old('id_beneficiario')}}'" :value_id="'selectBeneficiario'" :propname="'id_beneficiario'" :url="'/beneficiarios/obtenerlistadobeneficiarios'" :class_id="'select {{ $errors->has('id_beneficiario') ? ' is-danger' : '' }}'"></select-generico>
               @if ($errors->has('id_beneficiario'))
                 <p class="help is-danger">{{ $errors->first('id_beneficiario') }}</p>
               @endif

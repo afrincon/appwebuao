@@ -2,6 +2,7 @@
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
 window.Calendar = require('bulma-calendar');
+window.swal = require('sweetalert');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -56,6 +57,8 @@ if (token) {
 //     encrypted: true
 // });
 
+/* Cerrar Notificaciones de bulma */
+
 window.$(document).on('click', '.notification > button.delete', function() {
     $(this).parent().addClass('is-hidden');
     return false;
@@ -74,3 +77,89 @@ calendars.forEach(calendar => {
 });
 
 */
+
+/* Deshabilitar boton de  guardar*/
+$('#btnBeneficiario').attr("disabled", true);
+
+/* Validacion de direccion del beneficiario */
+
+window.$(document).on('click', '#confirmarDireccion', function(){
+    //Capturar valores del select
+    var step1 = $('#step1 option:selected').text();
+    var step1index = $('#step1 option:selected').index();
+    var step2 = $("#step2").val();
+    var step3 = $("#step3").val();
+    var step4 = $("#step4").val();
+    
+    // Armar texto campo direccion
+    var address = step1.concat(' ', step2, ' #', step3, '-', step4);
+
+    /* Validaciones a los input y al select */ 
+    if(step1index !== 0){
+        if(step2.length > 0 && step3.length > 0 && step4.length > 0) {
+            /* activar el input y asignar valor para que laravel lo pueda capturar */
+            $('#direccionBeneficiario').removeAttr("disabled");
+            $('#direccionBeneficiario').attr('readonly',true);
+            $('#direccionBeneficiario').val(address);
+
+            /*  peticion ajax para validar si la direccion existe en la base de datos */
+            $.ajax({
+                url: "/beneficiarios/validardireccion", 
+                dataType:'json',  // tipo de datos que te envia el archivo que se ejecuto                              
+                method: "GET", // metodo por el cual vas a enviar los parametros GET o POST
+                data: {'direccion':address}, //parametros GET o POST 
+                success: function(response) {
+                    if(response === 1){
+                        swal({
+                            title: "Hay un beneficiario registrado con la misma direccion!",
+                            text: "¿desea registrar este beneficiario con la misma direccion?",
+                            icon: "warning",
+                            buttons: ["Volver", "Continuar"],
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                $('#btnBeneficiario').removeAttr('disabled');
+                            } 
+                        });                       
+                    }
+                }
+            });
+        } else {                      
+            window.swal('Debe de llenar completos los campos de la direccion');
+        }
+    } else {
+        window.swal('Debe de seleccionar una opción entre avenida, calle, carrera, diagonal o trasversal');
+    }    
+    
+});
+
+window.$(document).on('change', '#selectBeneficiario', function(){
+    var beneficiario = $('#selectBeneficiario option:selected').val();
+
+    $.ajax({
+        url: "/ayudas/validarayuda",
+        dataType:'json',  // tipo de datos que te envia el archivo que se ejecuto                              
+        method: "GET", // metodo por el cual vas a enviar los parametros GET o POST
+        data: {'id_beneficiario':beneficiario},
+        success: function(response){
+            
+            if(!$.isEmptyObject(response)){
+                console.log(response);
+                swal({
+                    title: "Encontramos una ayuda brindada",
+                    text: 'La ultima ayuda entregada fue el ' + response.fecha_ayuda,
+                    icon: "warning",
+                    button: "Aceptar",
+                });
+            }
+            
+            
+        },
+        error: function(errorThrown){
+            alert(errorThrown);
+            swal("Encontramos un error al tratar de traer los datos del beneficiario!");
+        }  
+    });
+});
+

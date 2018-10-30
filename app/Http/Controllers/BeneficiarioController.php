@@ -44,9 +44,9 @@ class BeneficiarioController extends Controller
             ]),
         ]);
 
-         $beneficiario  = new beneficiario($data);
-         $beneficiario->save();
-         return redirect()->route('beneficiarios.index')->with('status', 'Beneficiario agregado correctamente');
+        $beneficiario  = new beneficiario($data);
+        $beneficiario->save();
+        return redirect()->route('beneficiarios.index')->with('status', 'Beneficiario agregado correctamente');
     }
 
     public function edit($id) {
@@ -91,5 +91,14 @@ class BeneficiarioController extends Controller
     public function obtenerTipoDocumento(Request $request){
         $tipos = TiposDocumento::all();
         return response()->json($tipos);
+    }
+
+    public function validarDireccion(Request $request){
+        //dd($direccion);
+        $beneficiario = Beneficiario::where('direccion', '=', $request->input('direccion'))->latest()->first();
+        if(!empty($beneficiario)){
+            return 1;
+        }
+        return 0;
     }
 }

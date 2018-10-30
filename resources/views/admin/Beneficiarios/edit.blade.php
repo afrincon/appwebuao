@@ -46,10 +46,48 @@
 
         <div class="field">
           <label class="label">Dirección</label>
-          <input type="text" name="direccion" class="input {{ $errors->has('direccion') ? ' is-danger' : '' }}" value="{{ old('direccion', $beneficiario->direccion) }}" placeholder="Ingrese la dirección de la iglesia">
+          <input type="text" name="direccion" id="direccionBeneficiario" class="input {{ $errors->has('direccion') ? ' is-danger' : '' }}" value="{{ old('direccion', $beneficiario->direccion) }}" readonly>
           @if ($errors->has('direccion'))
             <p class="help is-danger">{{ $errors->first('direccion') }}</p>
           @endif
+        </div>
+
+        <div class="columns">          
+          <div class="column">            
+            <div class="columns is-mobile">
+              <div class="column">                  
+                <div class="select">
+                  <select id="step1">
+                    <option selected disabled>Selecionar</option>
+                    <option>Avenida</option>
+                    <option>Calle</option>
+                    <option>Carrera</option>
+                    <option>Diagonal</option>
+                    <option>Transversal</option>
+                  </select>
+                </div>
+              </div>
+              <div class="column">                
+                <input class="input" type="text" placeholder="Número" id="step2">
+              </div>
+              <div class="column">
+                <input class="input" type="text" placeholder="Número" id="step3">
+              </div>
+              <div class="column">
+                <input class="input" type="text" placeholder="Número" id="step4">
+              </div>
+            </div>
+          </div>
+          <div class="column">            
+            <div class="columns is-mobile">              
+              <div class="column">
+                  <input class="input" type="text" placeholder="Información adicional" id="step5">
+              </div>              
+              <div class="column">
+                  <a class="button is-primary" id="confirmarDireccion">Confirmar dirección</a>
+              </div>             
+            </div>
+          </div>
         </div>
         
 
@@ -68,7 +106,7 @@
               <label class="label">Clasificación</label>
               <div class="select {{ $errors->has('clasificacion') ? ' is-danger' : '' }}">
                 <select name="clasificacion">
-                  <option selected>Seleccione una opcion</option>
+                  <option selected disabled>Seleccione una opcion</option>
                   <option value="Vulnerable N-1">Vulnerable N-1</option>
                   <option value="Vulnerable N-2">Vulnerable N-2</option>
                   <option value="Vulnerable N-3">Vulnerable N-3</option>
