@@ -1,6 +1,6 @@
 <template>
   <div id="crud" class="row">
-    <input type="text" name="nombre" class="input" v-model="nombre" placeholder="Buscar iglesia">
+    <input type="text" name="nombre" class="input" v-model="nombre" placeholder="Buscar beneficiario">
     <br>
     <div class="col-md-12">
       <table class="table table-hover table-striped is-fullwidth">

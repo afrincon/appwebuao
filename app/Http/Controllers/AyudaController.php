@@ -57,12 +57,12 @@ class AyudaController extends Controller
     public function destroy($id) {
         $ayuda = Ayuda::findOrFail($id);
         $ayuda->delete();
-        return redirect()->route('ayudas.index')->with('status', 'Ayuda anulada correctamente');
+        return response()->json('Deleted');
     }
 
-    public function obtenerAyudas(){
-        $ayudas = Ayuda::all();
-        $ayudas->load('tipoAyuda', 'iglesia', 'beneficiario');
+    public function obtenerAyudas(Request $request){
+        $ayudas = Ayuda::where('id_beneficiario', 'like', '%'.$request->input('id_beneficiario').'%')->get();
+        $ayudas->load('iglesia', 'beneficiario', 'tipoAyuda');        
         return response()->json($ayudas);
     }
 

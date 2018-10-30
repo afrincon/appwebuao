@@ -25,7 +25,7 @@
             <td>{{ ayuda.observaciones }}</td>
             <td>
               <a class="button is-link is-rounded is-outlined" :href="'/ayudas/' + ayuda.id_ayuda + '/editar'">Editar</a>
-              <a class="button is-danger is-rounded is-outlined" :href="'#'">Anular</a>
+              <a class="button is-danger is-rounded is-outlined" v-on:click='deleteEntry(ayuda)'>Anular</a>
             </td>
           </tr>
         </tbody>
@@ -57,7 +57,28 @@ export default {
       axios.get(url, { params: { id_beneficiario: this.id_beneficiario }}).then(response => {
         this.ayudas = response.data;
       });
-    }  
+    },
+    deleteEntry: function(ayuda){
+      window.swal({
+        title: "Advertencia!",
+        text: "¿Desea anular esta ayuda?",
+        icon: "warning",
+        buttons: ["Volver", "Continuar"],
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+          if (willDelete) {
+            axios.delete('ayudas/' + ayuda.id_ayuda)
+              .then(response => {
+                window.swal("Ayuda anulada correctamente");
+            })
+            .catch(error => {
+                window.swal("Error al anular el documento");
+            });
+          } 
+      });
+      
+    }
   }
 }
 </script>

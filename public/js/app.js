@@ -44069,7 +44069,11 @@ var render = function() {
         }
       ],
       staticClass: "input",
-      attrs: { type: "text", name: "nombre", placeholder: "Buscar iglesia" },
+      attrs: {
+        type: "text",
+        name: "nombre",
+        placeholder: "Buscar beneficiario"
+      },
       domProps: { value: _vm.nombre },
       on: {
         input: function($event) {
@@ -44293,6 +44297,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get(url, { params: { id_beneficiario: this.id_beneficiario } }).then(function (response) {
         _this.ayudas = response.data;
       });
+    },
+
+    deleteEntry: function deleteEntry(ayuda) {
+      window.swal({
+        title: "Advertencia!",
+        text: "¿Desea anular esta ayuda?",
+        icon: "warning",
+        buttons: ["Volver", "Continuar"],
+        dangerMode: true
+      }).then(function (willDelete) {
+        if (willDelete) {
+          axios.delete('ayudas/' + ayuda.id_ayuda).then(function (response) {
+            window.swal("Ayuda anulada correctamente");
+          }).catch(function (error) {
+            window.swal("Error al anular el documento");
+          });
+        }
+      });
     }
   }
 });
@@ -44367,7 +44389,11 @@ var render = function() {
                     "a",
                     {
                       staticClass: "button is-danger is-rounded is-outlined",
-                      attrs: { href: "#" }
+                      on: {
+                        click: function($event) {
+                          _vm.deleteEntry(ayuda)
+                        }
+                      }
                     },
                     [_vm._v("Anular")]
                   )

@@ -16,7 +16,7 @@
     </div>      
     @endif
     <div class="panel-block">
-      <tabla-ayudas></tabla-ayudas>
+    <tabla-ayudas></tabla-ayudas>
     </div>            
       
   </div>
