@@ -16,7 +16,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="ayuda in ayudas" :key="ayuda.id_ayuda">            
+          <tr v-for="ayuda in ayudas" :key="ayuda.id_ayuda">  
+            {{ ayuda.beneficiario.nombre }}          
             <td>{{ ayuda.id_ayuda }}</td>
             <td>{{ ayuda.fecha_ayuda }}</td>
             <td>{{ ayuda.tipo_ayuda.descripcion }}</td>
