@@ -70,7 +70,9 @@ export default {
           if (willDelete) {
             axios.delete('ayudas/' + ayuda.id_ayuda)
               .then(response => {
-                window.swal("Ayuda anulada correctamente");
+                if(response.status === 200){
+                  window.swal("Ayuda anulada correctamente");                  
+                }
             })
             .catch(error => {
                 window.swal("Error al anular el documento");

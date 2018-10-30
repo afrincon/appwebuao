@@ -22,7 +22,7 @@
           <div class="column is-one-third">
             <div class="field">
               <label for="nombre" class="label">Fecha de entrega</label>
-              <input type="date" name="fecha_ayuda" class="input {{ $errors->has('fecha_ayuda') ? ' is-danger' : '' }}" value="{{ old('fecha_ayuda') }}" placeholder="Ingrese la fecha de entrega" autofocus>
+              <input type="date" name="fecha_ayuda" id="calendarioayudas" class="input {{ $errors->has('fecha_ayuda') ? ' is-danger' : '' }}" value="{{ old('fecha_ayuda') }}" placeholder="Ingrese la fecha de entrega" autofocus>
               @if ($errors->has('fecha_ayuda'))
                 <p class="help is-danger">{{ $errors->first('fecha_ayuda') }}</p>
               @endif

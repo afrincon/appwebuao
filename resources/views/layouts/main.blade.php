@@ -80,7 +80,7 @@
         <div class="columns is-mobile">
           @yield('content')
         </div>        
-      </main>
-    </div>
+      </main>      
+    </div>    
 </body>
 </html>
