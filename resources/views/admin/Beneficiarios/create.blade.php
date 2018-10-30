@@ -51,7 +51,7 @@
 
         <div class="field">
           <label class="label">Dirección</label>
-          <input type="text" name="direccion" class="input {{ $errors->has('direccion') ? ' is-danger' : '' }}" value="{{ old('direccion') }}" placeholder="Ingrese la dirección de la iglesia">
+          <input type="text" name="direccion" id="direccionBeneficiario" class="input {{ $errors->has('direccion') ? ' is-danger' : '' }}" value="{{ old('direccion') }}" placeholder="Ingrese la dirección de la iglesia">
           @if ($errors->has('direccion'))
             <p class="help is-danger">{{ $errors->first('direccion') }}</p>
           @endif

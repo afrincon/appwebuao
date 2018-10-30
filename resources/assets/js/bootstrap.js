@@ -2,6 +2,7 @@
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
 window.Calendar = require('bulma-calendar');
+window.swal = require('sweetalert');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -56,6 +57,8 @@ if (token) {
 //     encrypted: true
 // });
 
+/* Cerrar Notificaciones de bulma */
+
 window.$(document).on('click', '.notification > button.delete', function() {
     $(this).parent().addClass('is-hidden');
     return false;
@@ -74,3 +77,8 @@ calendars.forEach(calendar => {
 });
 
 */
+
+/* Validacion de direccion del beneficiario */
+
+const address = document.getElementById('direccionBeneficiario');
+console.log(address);

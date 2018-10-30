@@ -26,6 +26,7 @@ Route::get('/iglesias/obtenerlistadoiglesias', 'IglesiaController@obtenerIglesia
 Route::get('/iglesias/obtenerlistadodiocesis', 'IglesiaController@obtenerDiocesis');
 Route::get('/beneficiarios/obtenerlistadobeneficiarios', 'BeneficiarioController@obtenerBeneficiarios');
 Route::get('/beneficiarios/obtenerlistadotiposdoc', 'BeneficiarioController@obtenerTipoDocumento');
+Route::get('/beneficiarios/validardireccion', 'BeneficiarioController@validarDireccion');
 Route::get('/ayudas/obtenerlistadoayudas', 'AyudaController@obtenerAyudas');
 Route::get('/ayudas/obtenertiposayudas', 'AyudaController@obtenerTipoAyuda');
 
