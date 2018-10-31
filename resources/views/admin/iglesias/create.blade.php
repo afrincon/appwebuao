@@ -61,8 +61,10 @@
               @endif
             </div>
           </div>
+          
         </div>
         <input type="hidden" name="estado" value="1">
+        <lista-generica></lista-generica>
         <hr>
         
         <button type="submit" class="button is-link is-medium is-outlined">Guardar</button>

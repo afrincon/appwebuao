@@ -93,6 +93,7 @@ window.$(document).on('click', '#confirmarDireccion', function(){
                 method: "GET", // metodo por el cual vas a enviar los parametros GET o POST
                 data: {'direccion':address}, //parametros GET o POST 
                 success: function(response) {
+                    console.log(response);
                     if(response === 1){
                         swal({
                             title: "Hay un beneficiario registrado con la misma direccion!",
@@ -104,8 +105,11 @@ window.$(document).on('click', '#confirmarDireccion', function(){
                         .then((willDelete) => {
                             if (willDelete) {
                                 $('#btnBeneficiario').removeAttr('disabled');
-                            } 
+                            }
                         });                       
+                    }
+                    else {
+                        $('#btnBeneficiario').removeAttr('disabled');
                     }
                 }
             });

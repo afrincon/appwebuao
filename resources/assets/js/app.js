@@ -23,6 +23,7 @@ Vue.component('tabla-beneficiarios', require('./components/TableBeneficiariosCom
 Vue.component('tabla-ayudas', require('./components/TableAyudasComponent.vue'));
 Vue.component('select-generico', require('./components/GenericSelectComponent.vue'));
 Vue.component('tiles-generico', require('./components/TilesDashComponent.vue'));
+Vue.component('lista-generica', require('./components/GenericDataListComponent.vue'));
 
 
 
